@@ -9,7 +9,7 @@ if (env === "development") {
   entry = path.join(__dirname, "./src/entry.js")
 
 }
- let filenames =path.join(__dirname).split("/")
+ let filenames =process.cwd().split("/")
  let filename=filenames[filenames.length-1]
   return  {
   entry: entry,
