@@ -1,4 +1,3 @@
-const {https}= require('../utils/http.js')
 const  fs = require('fs');
 const compressing = require('compressing');
 var needle = require('needle');

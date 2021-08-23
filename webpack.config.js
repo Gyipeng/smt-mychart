@@ -1,14 +1,23 @@
 var path = require('path')
 var webpack = require('webpack')
 
-module.exports = {
-  entry: './src/components/index.js',
-  // entry: './src/main.js',
+module.exports =(env)=>{
+  let entry =null;
+if (env === "development") {
+  entry= path.join(__dirname, "./src/localDev/localEntry.js")
+}else{
+  entry = path.join(__dirname, "./src/entry.js")
+
+}
+ let filenames =path.join(__dirname).split("/")
+ let filename=filenames[filenames.length-1]
+  return  {
+  entry: entry,
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    filename: 'my-chart.js',
-    library: "my-chart",
+    filename:`${filename}.js`,
+    library: filename,
     libraryTarget: "umd",
     umdNamedDefine: true
   },
@@ -109,4 +118,4 @@ if (process.env.NODE_ENV === 'production') {
       minimize: true
     })
   ])
-}
+}}
